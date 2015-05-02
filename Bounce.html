@@ -5,9 +5,13 @@
   <div class="row">
     <div class="col-md-12">
       <h1>Leaderboard</h1>
-      {{> loginButtons}}
+       {{> loginButtons}}
     </div>
   </div>
+    
+       {{#if currentUser}}
+                <p>Hello,{{firstName}}!</p>
+        {{/if}}
 
     {{> location}}
     
@@ -25,7 +29,7 @@
         <p class="text-center">
      
         </p>
-        {{> viewColumn }}
+        {{> viewColumn}}
       </div>
       
     </div> <!-- end of row -->
@@ -140,7 +144,9 @@ need to write Javascript code.
   <div class="list-group">
   {{#each meetingsList}}
     <div class="list-group-item">
-      <span class="list-group-item-heading mName">{{name}}</span>
+        {{#if currentUser}}
+          <span class="list-group-item-heading mName">{{firstName}}</span>  
+        {{/if}}
       <span> in {{location}}.</span><br>
       <span>On {{dateStr}}, {{startTimeStr}} - {{endTimeStr}}.</span>
         <span> is doing {{activityStr}}</span>

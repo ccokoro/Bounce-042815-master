@@ -1,3 +1,4 @@
+//Projection Id essential-storm-93200
 PlayersList = new Mongo.Collection('players');
 // console.log("Hello world");
 
@@ -34,7 +35,7 @@ Meteor.methods({
     // Date() objects
     var startTimeObj = new Date(meetingObj.date + " " + meetingObj.startTime);
     var endTimeObj = new Date(meetingObj.date + " " + meetingObj.endTime);
-    var currentUserId = Meteor.user().username;
+//    var currentUserId = Meteor.user().username;
       
     Meetings.insert({
       name: currentUserId,
@@ -83,8 +84,19 @@ if(Meteor.isClient){
 	  'showSelectedPlayer': function(){
 	    var selectedPlayer = Session.get('selectedPlayer');
 	    return PlayersList.findOne(selectedPlayer)
-		}
+		}       
+       
     });
+    
+    Template.body.helpers({
+        firstName: function(){
+        var user = Meteor.user(); 
+        if (user) {
+             currentUserId = user.services.google.given_name;
+            return user.services.google.given_name;    
+        } 
+   }
+});
 
    Template.leaderboard.events({
    	'click .player': function(){
@@ -128,6 +140,7 @@ if(Meteor.isClient){
 Meetings = new Mongo.Collection('meetings');
 Session.setDefault("addMeetingFlag", false);
 Session.setDefault("viewMeetingFlag", false);
+var currentUserId = "Grace"; 
 Meteor.subscribe('theMeetings');
 
 
@@ -147,7 +160,7 @@ Template.body.events({
       Session.set("viewMeetingFlag", false);
     }
   }
-})
+}); 
 
 
 /* Template helpers that set the values for the variables that control
@@ -171,8 +184,14 @@ Template.viewColumn.helpers({
   
   meetingsList: function(){
     return Meetings.find({});
-  }
-  
+  },
+     firstName: function(){
+        var user = Meteor.user(); 
+        if (user) {
+             currentUserId = user.services.google.given_name;
+            return user.services.google.given_name;    
+        } 
+   }
 });
                       
 
@@ -184,7 +203,7 @@ Template.addMeetingForm.events({
       console.log("submit form");
 
       var meetingObject = {
-        /*name: event.target.meetingname,*/
+        name: currentUserId,
         location: event.target.meetingLocation.value,
         date: event.target.meetingDate.value,
         startTime: event.target.startTime.value,
