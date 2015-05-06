@@ -10,5 +10,5 @@ twbs:bootstrap
 insecure
 jquery
 momentjs:moment
-accounts-google
 autopublish
+accounts-password

@@ -1,23 +1,73 @@
-.selected{
-    background-color: yellow;
+/*Life*/
+body{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
 }
 
-#selectedPlayer{
-	color: blue;
-	font-weight: bold;
+#name{
+    text-align: center;
 }
 
-input{
-	margin-top: 10px;
-	margin-bottom: 10px;
+h1{
+    font-size: 4em;
+    text-align: center;
+    -webkit-animation: bounce 800ms ease-out;
+	-moz-animation: bounce 800ms ease-out;
+	-o-animation: bounce 800ms ease-out;
+	animation: bounce 800ms ease-out;
 }
 
-#total{
-	font-weight: bold;
-	font-size: 18px;
-}
+/* Webkit, Chrome and Safari */
 
-.row{
-	margin:auto;
+@-webkit-keyframes bounce {
+  0% {
+	-webkit-transform:translateY(-100%);
+    opacity: 0;
+  }
+  5% {
+  	-webkit-transform:translateY(-100%);
+    opacity: 0;
+  }
+  15% {
+  	-webkit-transform:translateY(0);
+    padding-bottom: 5px;
+  }
+  30% {
+  	-webkit-transform:translateY(-50%);
+  }
+  40% {
+  	-webkit-transform:translateY(0%);
+    padding-bottom: 6px;
+  }
+  50% {
+  	-webkit-transform:translateY(-30%);
+  }
+  70% {
+  	-webkit-transform:translateY(0%);
+    padding-bottom: 7px;
+  }
+  80% {
+  	-webkit-transform:translateY(-15%);
+  }
+  90% {
+  	-webkit-transform:translateY(0%);
+  	padding-bottom: 8px;
+  }
+  95% {
+  	-webkit-transform:translateY(-10%);
+  }
+  97% {
+  	-webkit-transform:translateY(0%);
+  	padding-bottom: 9px;
+  }
+  99% {
+  	-webkit-transform:translateY(-5%);
+  }
+  100% {
+  	-webkit-transform:translateY(0);
+  	padding-bottom: 9px;
+    opacity: 1;
+  }
 }
 
